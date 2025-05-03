@@ -2,12 +2,13 @@
 
 namespace App\Providers;
 
-use Domain\SimpleUuidFactory;
 use Illuminate\Support\ServiceProvider;
 use Domain\Model\CompanyRepository;
-use Domain\SimpleUuidInterface;
 use Infrastructure\Repositories\CompanyRepositoryUsesInMemory;
+use Infrastructure\Support\SimpleUuidFactoryUsingRamsey;
 use Infrastructure\Support\SimpleUuidUsingRamsey;
+use Domain\SimpleUuidFactory;
+use Domain\SimpleUuidInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->bind(CompanyRepository::class, CompanyRepositoryUsesInMemory::class);
-        $this->app->bind(SimpleUuidInterface::class, SimpleUuidUsingRamsey::class);
-        $this->app->bind(SimpleUuidFactory::class, SimpleUuidUsingRamsey::class);
+        $this->app->bind(SimpleUuidFactory::class, SimpleUuidFactoryUsingRamsey::class);
+        $this->app->bind(SimpleUuidInterFace::class, SimpleUuidUsingRamsey::class);
     }
 }
