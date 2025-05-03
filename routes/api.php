@@ -7,6 +7,7 @@ use Infrastructure\Http\Controllers\CreateCompanyController;
 use Infrastructure\Http\Controllers\UpdateCompanyController;
 use Infrastructure\Http\Controllers\ListCompaniesController;
 use Infrastructure\Http\Controllers\GetCompanyController;
+use Infrastructure\Http\Controllers\DeleteCompanyController;
 
 /** @var Router $router */
 $router->middleware([])->prefix('companies')->group(static function (Router $router): void {
@@ -14,4 +15,5 @@ $router->middleware([])->prefix('companies')->group(static function (Router $rou
     $router->patch('/{companyId}', UpdateCompanyController::class);
     $router->get('/', ListCompaniesController::class);
     $router->get('/{companyId}', GetCompanyController::class);
+    $router->delete('/{companyId}', DeleteCompanyController::class);
 });
